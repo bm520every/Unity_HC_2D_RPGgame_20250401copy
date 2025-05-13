@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class ControlSystem : MonoBehaviour
 {
@@ -20,6 +21,25 @@ public class ControlSystem : MonoBehaviour
     private Animator ani;
     [SerializeField]
     private Rigidbody2D rig;
+    [Header("檢查地板資料")]
+    [SerializeField]
+    private Vector3 checkGroundSize = Vector3.one;
+    [SerializeField]
+    private Vector3 checkGroundOffset;
+    [SerializeField]
+    private LayerMask layerCanJump;
+
+    // 繪製圖式事件 ODG 快速完成
+    private void OnDrawGizmos()
+    {
+        // 1. 決定顏色
+        // new Color(紅, 綠, 藍, 透明度) 值 0 ~ 1
+        Gizmos.color = new Color(0.5f, 1, 0.5f, 0.5f);
+        // 2. 繪製圖式 (各種形狀)
+        // 繪製方塊(座標，尺寸)
+        // transform.position 此物件的座標
+        Gizmos.DrawCube(transform.position + checkGroundOffset, checkGroundSize);
+    }
 
     private void Update()
     {
@@ -37,6 +57,30 @@ public class ControlSystem : MonoBehaviour
         // 數學函式 的 絕對值(數值) - Mathf.Abs()
         ani.SetFloat("移動", Mathf.Abs(h));
 
+        // 布林值 有沒有碰撞 2D 物理 的 方形覆蓋(座標,尺寸,角度,圖層)
+        bool isGrounded = Physics2D.OverlapBox(transform.position + checkGroundOffset, 
+            checkGroundSize, 0, layerCanJump);
+
+        ani.SetBool("是否在地板上", isGrounded);
+        ani.SetFloat("重力", rig.velocity.y);
+
+        // Debug.Log($"<color=f#33>是否碰到地板:{isGrounded}</color>");
+
+        // 如果 在地板上 並且 按下空白建 就往上跳 (剛體的加速度)
+        // && 並且 Shift + 7
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space)) rig .velocity = new(0, jumpForce);
+
+        // 如果 h 取絕對值 < 0.1f 就 跳出
+        // return 跳出 : 不執行下方程式
+        //基本寫法 添加判斷式與跳出(輸入 if 從提示列選取會自動完成)
+        if (Mathf.Abs(h) < 0.1f)
+        {
+            return;
+        }
+
+        // 判斷式內如果只有一行可以省略大括號
+        // ex :  if (Mathf.Abs(h) < 0.1f) return;
+
         // 宣告區域變數 angle (只能在這個大括號內存取)
         // 當 h 大於 0 角度設定為 0 否則設定為 180
         float angle = h > 0 ? 0 : 180;
@@ -44,5 +88,7 @@ public class ControlSystem : MonoBehaviour
         transform.eulerAngles = new Vector3(0, angle, 0);
 
     }
+
+
 
 }
