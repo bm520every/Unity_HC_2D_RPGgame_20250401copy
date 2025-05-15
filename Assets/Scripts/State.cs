@@ -8,6 +8,8 @@ namespace Mr.Wonderful
     {
         public string name;
 
+        protected Player player;
+        protected StateMachine stateMachine;
         public void Enter()
         {
             Debug.Log($"<color=f69)>進入 <{name}> 狀態</color>");
