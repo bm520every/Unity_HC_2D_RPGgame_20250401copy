@@ -13,9 +13,9 @@ public class ControlSystem : MonoBehaviour
     //範圍 Range:限制數值變數最大最小值
     //標題 Header:添加標題在屬性面板
     [Header("基本資料")]
-    [SerializeField, Range(0,10)]
+    [SerializeField, Range(0, 10)]
     private float moveSpeed = 3.5f;
-    [SerializeField, Range(0,20)]
+    [SerializeField, Range(0, 20)]
     private int jumpForce = 3;
     [SerializeField]
     private Animator ani;
@@ -51,14 +51,14 @@ public class ControlSystem : MonoBehaviour
         //Debug.Log($"水平值:{h}");
 
         // 剛體 的 加速度=新的二維向量(X,Y)
-        rig.velocity = new Vector2(h*moveSpeed, rig.velocity.y);
+        rig.velocity = new Vector2(h * moveSpeed, rig.velocity.y);
 
         // 動畫 的 設定浮點數(參數，值) - ani.SetFloat(,)
         // 數學函式 的 絕對值(數值) - Mathf.Abs()
         ani.SetFloat("移動", Mathf.Abs(h));
 
         // 布林值 有沒有碰撞 2D 物理 的 方形覆蓋(座標,尺寸,角度,圖層)
-        bool isGrounded = Physics2D.OverlapBox(transform.position + checkGroundOffset, 
+        bool isGrounded = Physics2D.OverlapBox(transform.position + checkGroundOffset,
             checkGroundSize, 0, layerCanJump);
 
         ani.SetBool("是否在地板上", isGrounded);
@@ -68,7 +68,7 @@ public class ControlSystem : MonoBehaviour
 
         // 如果 在地板上 並且 按下空白建 就往上跳 (剛體的加速度)
         // && 並且 Shift + 7
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space)) rig .velocity = new(0, jumpForce);
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space)) rig.velocity = new(0, jumpForce);
 
         // 如果 h 取絕對值 < 0.1f 就 跳出
         // return 跳出 : 不執行下方程式
