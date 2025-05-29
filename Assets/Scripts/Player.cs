@@ -13,6 +13,10 @@ namespace Mr.Wonderful
         public float moveSpeed { get; private set; } = 3.5f;
         [field : SerializeField, Range(0, 20)]
         public int jumpForce { get; private set; } = 3;
+        [field: SerializeField, Range(0, 3)]
+        public float attackBrekaTime { get; private set; } = 1;
+        [field: SerializeField, Range(0, 1)]
+        public float[] attackAnimationTime { get; private set; }
 
         // 唯讀屬性 : 允許外部取得帶是不能修改 (保護資料) (不顯示)
         public Animator ani { get; private set; }

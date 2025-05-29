@@ -12,6 +12,11 @@ namespace Mr.Wonderful
         protected StateMachine stateMachine;
         protected float h;
 
+        /// <summary>
+        /// 計時器
+        /// </summary>
+        protected float timer;
+
         //建構子 : 實例化時會被呼叫，名稱與類別相同
         public State(Player _player, StateMachine _stateMachine, string _name)
         {
@@ -23,17 +28,21 @@ namespace Mr.Wonderful
         public virtual void Enter()
         {
             Debug.Log($"<color=f69)>進入 <{name}> 狀態</color>");
+            // 計時器歸零
+            timer = 0;
         }
 
         public virtual void Update()
         {
-            Debug.Log($"<color=f999)>更新 <{name}> 狀態</color>");
+           // Debug.Log($"<color=f999)>更新 <{name}> 狀態</color>");
             h = Input.GetAxis("Horizontal");
+            //Time.deltaTime 一個影格的時間
+            timer += Time.deltaTime;
         }
 
         public virtual void Exit()
         {
-            Debug.Log($"<color=f33)>離開 <{name}> 狀態</color>");
+           // Debug.Log($"<color=f33)>離開 <{name}> 狀態</color>");
 
         }
     }

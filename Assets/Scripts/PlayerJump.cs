@@ -27,6 +27,10 @@ namespace Mr.Wonderful
         {
             base.Update();
 
+            // 在空中可以左右控制
+            player.SetVelocity(new Vector2(h * player.moveSpeed, player.rig.velocity.y));
+            player.ani.SetFloat("移動", Mathf.Abs(h));
+            player.Flip(h);
             // 如果 剛體加速度的 Y 小於 0 就 切換到落下狀態
             if (player.rig.velocity.y < 0) stateMachine.SwitchState(player.playerFall);
         }

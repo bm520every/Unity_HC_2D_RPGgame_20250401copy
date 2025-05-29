@@ -1,4 +1,5 @@
-﻿namespace Mr.Wonderful
+﻿using UnityEngine;
+namespace Mr.Wonderful
 {
     /// <summary>
     /// 玩家落下
@@ -25,6 +26,11 @@
         {
             base.Update();
 
+
+            // 在空中可以控制左右
+            player.SetVelocity(new Vector2(h * player.moveSpeed, player.rig.velocity.y));
+            player.ani.SetFloat("移動", Mathf.Abs(h));
+            player.Flip(h);
             // 如果 碰到地板 就切回待機
             if (player.IsGrounded()) stateMachine.SwitchState(player.playerIdle);
         }
