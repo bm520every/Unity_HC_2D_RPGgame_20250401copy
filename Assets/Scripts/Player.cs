@@ -21,6 +21,12 @@ namespace Mr.Wonderful
         // 唯讀屬性 : 允許外部取得帶是不能修改 (保護資料) (不顯示)
         public Animator ani { get; private set; }
         public Rigidbody2D rig { get; private set; }
+
+        public bool canMove { get; set; } = false;
+        public bool canJump { get; set; } = false;
+        public bool canAttack { get; set; } = false;
+
+
         [Header("檢查地板資料")]
         [SerializeField]
         private Vector3 checkGroundSize = Vector3.one;
