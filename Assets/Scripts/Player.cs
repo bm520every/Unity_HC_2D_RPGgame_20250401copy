@@ -72,6 +72,9 @@ namespace Mr.Wonderful
 
             // 狀態機 指定狀態 為 待機
             stateMachine.DefaultState(playerIdle);
+
+            // 測試用 : 可以控制
+            TestCanControl();
         }
 
         private void Update()
@@ -107,6 +110,16 @@ namespace Mr.Wonderful
             if (Mathf.Abs(h) < 0.1f) return;
             float angle = h > 0 ? 0 : 180;
             transform.eulerAngles = new Vector3(0, angle, 0);
+        }
+
+        /// <summary>
+        /// 測試 : 可以控制移動、跳躍與攻擊
+        /// </summary>
+        private void TestCanControl()
+        {
+            canMove = true;
+            canJump = true;
+            canAttack = true;
         }
     }
 
