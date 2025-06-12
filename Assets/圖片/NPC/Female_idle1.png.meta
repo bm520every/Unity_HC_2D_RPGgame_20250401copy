@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f5eefddad8b0740449bb8536e64179c9
+guid: be2ae3680d2b20f46bd2af82d55d05f0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,106 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u672A\u547D\u540D-1_0"
+      name: Female_idle1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 80
         height: 64
-      alignment: 9
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab15a76a68789874f8d28917682452df
-      internalID: -1795458071
+      spriteID: 04d2bd0cbf865444394e174bfed2fbbc
+      internalID: -1152267885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u672A\u547D\u540D-1_1"
+      name: Female_idle1_1
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 80
         height: 64
-      alignment: 9
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 105279889e73dbc45a0c609e2e4643d0
-      internalID: -1283806561
+      spriteID: a4135dda998e2a447b7b5a44afaa6bda
+      internalID: 91749746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u672A\u547D\u540D-1_2"
+      name: Female_idle1_2
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 80
         height: 64
-      alignment: 9
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85ad33a6a5a43924daf2b6a61bb4bd3d
-      internalID: -299575014
+      spriteID: d2e22bfcff3e0624ea0c6b9ead9df80b
+      internalID: -702964214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u672A\u547D\u540D-1_3"
+      name: Female_idle1_3
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 80
         height: 64
-      alignment: 9
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27dda9aa2bd788246b12462e43650bea
-      internalID: 1523578594
+      spriteID: 30e6b382d91431b47aefdc64437472fb
+      internalID: 1440126693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u672A\u547D\u540D-1_4"
+      name: Female_idle1_4
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 80
         height: 64
-      alignment: 9
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85bb2b33d07385a4db9ec932dc2a57ea
-      internalID: 1580841617
+      spriteID: 6434ed7cb99723748b67c3bdfc2832d5
+      internalID: 1586389338
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u672A\u547D\u540D-1_0": -1795458071
-      "\u672A\u547D\u540D-1_1": -1283806561
-      "\u672A\u547D\u540D-1_2": -299575014
-      "\u672A\u547D\u540D-1_3": 1523578594
-      "\u672A\u547D\u540D-1_4": 1580841617
+      Female_idle1_0: -1152267885
+      Female_idle1_1: 91749746
+      Female_idle1_2: -702964214
+      Female_idle1_3: 1440126693
+      Female_idle1_4: 1586389338
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

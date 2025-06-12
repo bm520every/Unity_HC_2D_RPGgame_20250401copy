@@ -43,6 +43,14 @@ namespace Mr.Wonderful
         public PlayerJump playerJump { get; private set; }
         public PlayerFall playerFall { get; private set; }
         public PlayerAttack playerAttack { get; private set; }
+        public PlayerCrouch playerCrouch { get; private set; }
+        public PlayerCrouchWalk playerCrouchWalk { get; private set; }
+        public PlayerCrouchAttack playerCrouchAttack { get; private set; }
+        public PlayerHangFall playerHangFall { get; private set; }
+        public PlayerSlide playerSlide { get; private set; }
+        public PlayerRoll playerRoll { get; private set; }
+        public PlayerVault playerVault { get; private set; }
+        public PlayerTurnBack playerTurnBack { get; private set; }
         #endregion
         private void OnDrawGizmos()
         {
@@ -69,6 +77,14 @@ namespace Mr.Wonderful
             playerJump = new PlayerJump(this, stateMachine, "玩家跳躍");
             playerFall = new PlayerFall(this, stateMachine, "玩家落下");
             playerAttack = new PlayerAttack(this, stateMachine, "玩家攻擊");
+            playerCrouch = new PlayerCrouch(this, stateMachine, "玩家蹲下");
+            playerCrouchWalk = new PlayerCrouchWalk(this, stateMachine, "玩家蹲下行走");
+            playerCrouchAttack = new PlayerCrouchAttack(this, stateMachine, "玩家蹲下攻擊");
+            playerHangFall = new PlayerHangFall(this, stateMachine, "玩家掛落");
+            playerSlide = new PlayerSlide(this, stateMachine, "玩家滑鏟");
+            playerRoll = new PlayerRoll(this, stateMachine, "玩家翻滾");
+            playerVault = new PlayerVault(this, stateMachine, "玩家翻躍");
+            playerTurnBack = new PlayerTurnBack(this, stateMachine, "玩家折返");
 
             // 狀態機 指定狀態 為 待機
             stateMachine.DefaultState(playerIdle);

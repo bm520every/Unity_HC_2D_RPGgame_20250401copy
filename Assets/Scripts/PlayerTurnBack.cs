@@ -1,0 +1,28 @@
+﻿namespace Mr.Wonderful
+{
+    /// <summary>
+    /// 玩家折返
+    /// </summary>
+    public class PlayerTurnBack : PlayerGround
+    {
+        public PlayerTurnBack(Player _player, StateMachine _stateMachine, string _name) : base(_player, _stateMachine, _name)
+        {
+        }
+
+        public override void Enter()
+        {
+            base.Enter();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+        }
+    }
+}
