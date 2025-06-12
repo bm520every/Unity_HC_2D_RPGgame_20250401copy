@@ -5,7 +5,7 @@ namespace Mr.Wonderful
     /// <summary>
     /// 玩家地面狀態 : 可以從地面進入跳躍與攻擊狀態
     /// </summary>
-    public class PlayerGround : State
+    public class PlayerGround : PlayerState
     {
         public PlayerGround(Player _player, StateMachine _stateMachine, string _name) : base(_player, _stateMachine, _name)
         {

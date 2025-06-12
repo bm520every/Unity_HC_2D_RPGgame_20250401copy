@@ -4,7 +4,7 @@ namespace Mr.Wonderful
     /// <summary>
     /// 玩家攻擊
     /// </summary>
-    public class PlayerAttack : State
+    public class PlayerAttack : PlayerState
     {
         /// <summary>
         /// 當前攻擊段數

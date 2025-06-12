@@ -6,7 +6,7 @@ namespace Mr.Wonderful
 {
     public class State
     {
-        public string name;
+        protected string name;
 
         protected Player player;
         protected StateMachine stateMachine;
@@ -17,13 +17,8 @@ namespace Mr.Wonderful
         /// </summary>
         protected float timer;
 
-        //建構子 : 實例化時會被呼叫，名稱與類別相同
-        public State(Player _player, StateMachine _stateMachine, string _name)
-        {
-            player = _player;
-            stateMachine = _stateMachine;
-            name = _name;
-        }
+        
+        
         // virtual 虛擬 : 允許子類別覆寫 (override)
         public virtual void Enter()
         {

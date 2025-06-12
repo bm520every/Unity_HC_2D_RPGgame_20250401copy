@@ -4,7 +4,7 @@ namespace Mr.Wonderful
     /// <summary>
     /// 玩家跳躍
     /// </summary>
-    public class PlayerJump : State
+    public class PlayerJump : PlayerState
     {
         public PlayerJump(Player _player, StateMachine _stateMachine, string _name) : base(_player, _stateMachine, _name)
         {
