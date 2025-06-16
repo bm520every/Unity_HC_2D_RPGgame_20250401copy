@@ -72,6 +72,7 @@ public class ControlSystem : MonoBehaviour
 
         // 如果 h 取絕對值 < 0.1f 就 跳出
         // return 跳出 : 不執行下方程式
+        if (Mathf.Abs(h) < 0.1f) return;
         //基本寫法 添加判斷式與跳出(輸入 if 從提示列選取會自動完成)
         if (Mathf.Abs(h) < 0.1f)
         {

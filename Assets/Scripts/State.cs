@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
-/// <summary>
-/// 狀態 : 包含進入狀態、更新狀態與離開狀態
-/// </summary>
+
 namespace Mr.Wonderful
 {
+    /// <summary>
+    /// 狀態 : 包含進入狀態、更新狀態與離開狀態
+    /// </summary>
     public class State
     {
         protected string name;

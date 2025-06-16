@@ -1,4 +1,6 @@
-﻿namespace Mr.Wonderful
+﻿using UnityEngine;
+
+namespace Mr.Wonderful
 {
     /// <summary>
     /// 玩家折返

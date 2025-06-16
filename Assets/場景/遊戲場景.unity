@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7dbc3af715199458c4b33a58489f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <moveSpeed>k__BackingField: 5
+  <moveSpeed>k__BackingField: 4.5
   <jumpForce>k__BackingField: 7
   <attackBrekaTime>k__BackingField: 1
   <attackAnimationTime>k__BackingField:

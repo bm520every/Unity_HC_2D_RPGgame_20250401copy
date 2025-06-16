@@ -1,4 +1,6 @@
-﻿namespace Mr.Wonderful
+﻿using UnityEngine;
+
+namespace Mr.Wonderful
 {
     /// <summary>
     /// 玩家蹲下
@@ -22,7 +24,8 @@
         public override void Update()
         {
             base.Update();
-                       
+            // 如果 玩家水平值 等於 0 請就 狀態機 切換到 蹲下行走狀態
+            if (h == 0) stateMachine.SwitchState(player.playerCrouchWalk);
         }
     }
 }
