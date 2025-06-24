@@ -25,8 +25,11 @@ namespace Mr.Wonderful
         {
             base.Update();
 
-            // 如果 不能移動 就跳出
-            if (!player.canMove) return;
+            player.SetVelocity(new Vector2(h * player.moveSpeed, player.rig.velocity.y));
+            // 移動動畫
+            player.ani.SetFloat("移動", Mathf.Abs(h));
+            // 翻面
+            player.Flip(h);
 
             // 如果 玩家水平值 不等於 0 請就 狀態機 切換到 蹲下狀態
             if (h != 0) stateMachine.SwitchState(player.playerCrouch);

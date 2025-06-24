@@ -137,6 +137,15 @@ namespace Mr.Wonderful
             canJump = true;
             canAttack = true;
         }
+
+        public void SwitchControl(bool canControl)
+        {
+            rig.velocity = Vector3.zero;
+            stateMachine.SwitchState(playerIdle);
+            canMove = canControl;
+            canJump = canControl;
+            canAttack = canControl;
+        }
     }
 
 

@@ -14,11 +14,14 @@ namespace Mr.Wonderful
         public override void Enter()
         {
             base.Enter();
+            player.ani.SetFloat("移動", 0);
+            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeAll;
         }
 
         public override void Exit()
         {
             base.Exit();
+            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeRotation;
         }
 
         public override void Update()
