@@ -16,6 +16,14 @@ namespace Mr.Wonderful
         public Flowchart flowchart { get; private set; }
         public bool playerInArea { get; private set; }
 
+        /// <summary>
+        /// 是否在任務前對話過
+        /// </summary>
+        public bool isTalkingBefore { get; set; }
+
+        public int itemCountCurrent { get; private set; }
+        public int itemCountNeed { get; private set; } = 10;
+
         [SerializeField]
         private Vector3 offsetInteraction;
 
@@ -39,6 +47,9 @@ namespace Mr.Wonderful
             stateMachine.UpdateState();
             //　如果 玩家在範圍內 就更新互動介面座標
             if (playerInArea) uiInteraction.UpdatePoint(transform, offsetInteraction);
+#if UNITY_EDITOR
+            Test_AddItemCount();
+#endif
         }
 
         // OTE2 觸發事件：有勾選　is Trigger 才能使用
@@ -49,9 +60,7 @@ namespace Mr.Wonderful
             if (collision.CompareTag("Player"))
             {
                 playerInArea = true;
-                //　先停止所有協同程序再啟動避免錯誤
-                StopAllCoroutines();
-                StartCoroutine(FadeSystem.Fade(groupInteraction));
+                SwitchInteractionUI(playerInArea);
             }
            
         }
@@ -63,10 +72,30 @@ namespace Mr.Wonderful
             if (collision.CompareTag("Player"))
             {
                 playerInArea = false;
-                StopAllCoroutines();
-                StartCoroutine(FadeSystem.Fade(groupInteraction, false));
+                SwitchInteractionUI(playerInArea);
             }
            
         }
+
+
+        public void SwitchInteractionUI(bool fadeIn)
+        {
+            StopAllCoroutines();
+            StartCoroutine(FadeSystem.Fade(groupInteraction, fadeIn));
+        }
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// 測試：添加道具數量
+        /// </summary>
+        private void Test_AddItemCount()
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                itemCountCurrent++;
+                Debug.Log($"<color=#7f7>道具數量{itemCountCurrent}</color");
+            }
+        }
+#endif
     }
 }

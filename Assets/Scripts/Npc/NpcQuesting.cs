@@ -27,6 +27,10 @@ namespace Mr.Wonderful
             {
                 npc.flowchart.SendFungusMessage("任務中");
             }
+
+            //　如果 玩家當前道具數量　>=　道具需求數量 就切換到任務完成
+            if (npc.itemCountCurrent >= npc.itemCountNeed)
+                stateMachine.SwitchState(npc.qusetFinish);
         }
     }
 }

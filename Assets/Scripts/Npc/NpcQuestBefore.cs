@@ -28,7 +28,10 @@ namespace Mr.Wonderful
             }
 
             //　如果 計時器 > 1 秒 就切換到任務進行中
-            if (timer > 1) stateMachine.SwitchState(npc.questing);
+            // if (timer > 1) stateMachine.SwitchState(npc.questing);
+
+            //　如果 有在任務錢進行對話過 就 切換到任務進行中
+            if (npc.isTalkingBefore) stateMachine.SwitchState(npc.questing);
         }
     }
 }

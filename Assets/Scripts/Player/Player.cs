@@ -5,7 +5,7 @@ namespace Mr.Wonderful
     /// <summary>
     /// 玩家 : 儲存玩家資料與基本功能
     /// </summary>
-    public class Player : MonoBehaviour
+    public class Player : Character
     {
         #region 變數
         [field : Header("基本資料")]
@@ -18,9 +18,6 @@ namespace Mr.Wonderful
         [field: SerializeField, Range(0, 1)]
         public float[] attackAnimationTime { get; private set; }
 
-        // 唯讀屬性 : 允許外部取得帶是不能修改 (保護資料) (不顯示)
-        public Animator ani { get; private set; }
-        public Rigidbody2D rig { get; private set; }
 
         public bool canMove { get; set; } = false;
         public bool canJump { get; set; } = false;
@@ -64,11 +61,9 @@ namespace Mr.Wonderful
             Gizmos.DrawCube(transform.position + checkGroundOffset, checkGroundSize);
         }
 
-        private void Awake()
+        protected override void Awake()
         {
-            //取得此物件身上的 Animator 元件 並存放到 ani 變數
-            ani = GetComponent<Animator>();
-            rig = GetComponent<Rigidbody2D>();
+            base.Awake();
 
             //實例化狀態機 (產生一個狀態機物件在遊戲內開始執行，與掛在物件上相同)
             stateMachine = new StateMachine();
@@ -100,33 +95,12 @@ namespace Mr.Wonderful
             stateMachine.UpdateState();
 
         }
-
-        /// <summary>
-        /// 設定加速度
-        /// </summary>
-        /// <param name="velocity">加速度</param>
-        public void SetVelocity(Vector3 velocity)
-        {
-            rig.velocity = velocity;
-        }
-
-        /// <summary>
-        /// 翻面
-        /// </summary>
-        /// <param name="h">方向</param>
-       
         public bool IsGrounded()
         {
             return Physics2D.OverlapBox(transform.position + checkGroundOffset,
            checkGroundSize, 0, layerCanJump);
         }
 
-        public void Flip(float h)
-        {
-            if (Mathf.Abs(h) < 0.1f) return;
-            float angle = h > 0 ? 0 : 180;
-            transform.eulerAngles = new Vector3(0, angle, 0);
-        }
 
         /// <summary>
         /// 測試 : 可以控制移動、跳躍與攻擊
