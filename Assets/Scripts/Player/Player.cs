@@ -25,6 +25,7 @@ namespace Mr.Wonderful
         public bool canMove { get; set; } = false;
         public bool canJump { get; set; } = false;
         public bool canAttack { get; set; } = false;
+        public bool canCrouch { get; set; } = false;
 
 
         [Header("檢查地板資料")]
@@ -98,7 +99,6 @@ namespace Mr.Wonderful
             // 狀態機 更新狀態
             stateMachine.UpdateState();
 
-           // Debug.Log($"<color=#ff9>是否碰到地板:{IsGrounded()}</color>");
         }
 
         /// <summary>
@@ -136,6 +136,7 @@ namespace Mr.Wonderful
             canMove = true;
             canJump = true;
             canAttack = true;
+            canCrouch = true;
         }
 
         public void SwitchControl(bool canControl)
@@ -145,6 +146,7 @@ namespace Mr.Wonderful
             canMove = canControl;
             canJump = canControl;
             canAttack = canControl;
+            canCrouch = canControl;
         }
     }
 

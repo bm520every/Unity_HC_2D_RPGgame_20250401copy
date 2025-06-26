@@ -29,12 +29,12 @@ namespace Mr.Wonderful
             if (player.canJump && player.IsGrounded() && Input.GetKeyDown(KeyCode.Space))
                 stateMachine.SwitchState(player.playerJump);
 
-            // 如果 可以攻擊 並解 玩家在地面上 並且 按左鍵 就切換到攻擊狀態
+            // 如果 可以攻擊 並且 玩家在地面上 並且 按左鍵 就切換到攻擊狀態
             if (player.canAttack && player.IsGrounded() && Input.GetKeyDown(KeyCode.Mouse0))
                 stateMachine.SwitchState(player.playerAttack);
 
-            // 如果 可以跳躍 並且 玩家在地面上 並且 按空白建 就切換到跳躍狀態
-            if (player.canJump && player.IsGrounded() && Input.GetKeyDown(KeyCode.C))
+            // 如果 可以蹲下 並且 玩家在地面上 並且 按C 就切換到蹲下狀態
+            if (player.canCrouch && player.IsGrounded() && Input.GetKeyDown(KeyCode.C))
                 stateMachine.SwitchState(player.playerCrouch);
         }
     }
