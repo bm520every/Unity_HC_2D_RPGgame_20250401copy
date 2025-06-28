@@ -8,7 +8,7 @@ namespace Mr.Wonderful
     public class Character : MonoBehaviour
     {
 
-        // 唯讀屬性 : 允許外部取得帶是不能修改 (保護資料) (不顯示)
+        // 唯讀屬性 : 允許外部取得但是不能修改 (保護資料) (不顯示)
         public Animator ani { get; private set; }
         public Rigidbody2D rig { get; private set; }
 

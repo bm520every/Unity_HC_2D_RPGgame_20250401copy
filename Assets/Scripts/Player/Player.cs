@@ -95,6 +95,12 @@ namespace Mr.Wonderful
             stateMachine.UpdateState();
 
         }
+
+
+        /// <summary>
+        /// 是否在底板上
+        /// </summary>
+        /// <returns></returns>
         public bool IsGrounded()
         {
             return Physics2D.OverlapBox(transform.position + checkGroundOffset,

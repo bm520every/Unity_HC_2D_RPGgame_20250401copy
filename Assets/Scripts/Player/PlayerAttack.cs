@@ -55,7 +55,7 @@ namespace Mr.Wonderful
         {
             base.Update();
             Debug.Log($"<color=#ff3>計時器:{timer}</color>");
-            // 移動動畫歸零
+            // 移動動畫歸零 
             player.ani.SetFloat("移動", 0);
             // 如果 計時器 >= 攻擊動畫時間 就切回待機
             if (timer >= player.attackAnimationTime[attackIndex -1])

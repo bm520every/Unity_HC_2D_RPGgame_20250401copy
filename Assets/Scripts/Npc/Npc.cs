@@ -77,9 +77,15 @@ namespace Mr.Wonderful
            
         }
 
-
+        /// <summary>
+        /// 切換互動介面
+        /// </summary>
+        /// <param name="fadeIn">是否要淡入</param>
         public void SwitchInteractionUI(bool fadeIn)
         {
+            //　如果此物件不在階層面板上(停止遊戲或被刪除時) 就跳出
+            if(!gameObject.activeInHierarchy) return;
+            //　先停止所有協程在啟動避免錯誤
             StopAllCoroutines();
             StartCoroutine(FadeSystem.Fade(groupInteraction, fadeIn));
         }

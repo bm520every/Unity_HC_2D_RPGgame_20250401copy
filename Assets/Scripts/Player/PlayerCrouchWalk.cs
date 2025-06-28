@@ -31,8 +31,9 @@ namespace Mr.Wonderful
             // 翻面
             player.Flip(h);
 
-            // 如果 玩家水平值 不等於 0 請就 狀態機 切換到 蹲下狀態
-            if (h != 0) stateMachine.SwitchState(player.playerCrouch);
+            player.Flip(h);
+            // 如果 玩家水平值 等於 0 請就 狀態機 切換到 蹲下狀態
+            if (h == 0) stateMachine.SwitchState(player.playerCrouch);
         }
     }
 }
