@@ -11,12 +11,18 @@ namespace Mr.Wonderful
         [field : Header("基本資料")]
         [field : SerializeField, Range(0, 10)]
         public float moveSpeed { get; private set; } = 3.5f;
+        [field: SerializeField, Range(0, 5)]
+        public float crouchSpeed { get; private set; } = 1.5f;
         [field : SerializeField, Range(0, 20)]
         public int jumpForce { get; private set; } = 3;
         [field: SerializeField, Range(0, 3)]
         public float attackBrekaTime { get; private set; } = 1;
         [field: SerializeField, Range(0, 1)]
         public float[] attackAnimationTime { get; private set; }
+        [field: SerializeField, Range(0f, 20f)]
+        public float slideSpeed { get; private set; } = 10f;
+        [field: SerializeField, Range(0f, 2f)]
+        public float slideDuration { get; private set; } = 0.5f;
 
 
         public bool canMove { get; set; } = false;
@@ -49,7 +55,14 @@ namespace Mr.Wonderful
         public PlayerRoll playerRoll { get; private set; }
         public PlayerVault playerVault { get; private set; }
         public PlayerTurnBack playerTurnBack { get; private set; }
+        public Vector2 inputDirection { get; private set; }
         #endregion
+
+        // 是否正在跑步（用來偵測滑鏟觸發）
+        public bool IsRunning => Mathf.Abs(inputDirection.x) > 0.8f && IsGrounded();
+        // 在 Player 類別中加入 faceDir 屬性
+        public int faceDir { get; set; } = 1;
+
         private void OnDrawGizmos()
         {
             // 1. 決定顏色
@@ -94,7 +107,15 @@ namespace Mr.Wonderful
             // 狀態機 更新狀態
             stateMachine.UpdateState();
 
+            // ✅ 控制 Animator 地板布林值與重力參數
+            ani.SetBool("是否在地板上", IsGrounded());
+            ani.SetFloat("重力", rig.velocity.y);
+
+            inputDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
         }
+
+        
 
 
         /// <summary>

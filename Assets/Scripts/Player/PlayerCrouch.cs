@@ -14,14 +14,16 @@ namespace Mr.Wonderful
         public override void Enter()
         {
             base.Enter();
-            player.ani.SetFloat("移動", 0);
-            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeAll;
+            
+            player.ani.SetBool("是否蹲下", true);
+            player.rig.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         }
 
         public override void Exit()
         {
             base.Exit();
-            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeRotation;
+            player.ani.SetBool("是否蹲下", false);
         }
 
         public override void Update()
@@ -29,12 +31,13 @@ namespace Mr.Wonderful
 
             base.Update();
 
-            // 如果 不能移動 就跳出
-            if (!player.canMove) return;
+            // 左右移動就切蹲下行走
+            if (Mathf.Abs(h) > 0)
+                stateMachine.SwitchState(player.playerCrouchWalk);
 
-            // 如果 玩家水平值 不等於 0 請就 狀態機 切換到 蹲下行走狀態
-            if (h != 0) stateMachine.SwitchState(player.playerCrouchWalk);
-
+            // 攻擊鍵
+            if (Input.GetMouseButtonDown(0))
+                stateMachine.SwitchState(player.playerCrouchAttack);
         }
     }
 }

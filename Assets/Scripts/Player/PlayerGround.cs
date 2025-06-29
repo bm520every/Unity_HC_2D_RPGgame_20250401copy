@@ -3,39 +3,62 @@
 namespace Mr.Wonderful
 {
     /// <summary>
-    /// 玩家地面狀態 : 可以從地面進入跳躍與攻擊狀態
+    /// 玩家地面狀態 : 可以從地面進入跳躍、攻擊、蹲下、滑鏟等狀態
     /// </summary>
     public class PlayerGround : PlayerState
     {
-        public PlayerGround(Player _player, StateMachine _stateMachine, string _name) : base(_player, _stateMachine, _name)
-        {
-        }
+        private bool crouchToggle = false;
+        private float lastCPressTime = 0f;
 
-        public override void Enter()
+        public PlayerGround(Player _player, StateMachine _stateMachine, string _name)
+            : base(_player, _stateMachine, _name)
         {
-            base.Enter();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
         }
 
         public override void Update()
         {
             base.Update();
 
-            // 如果 可以跳躍 並且 玩家在地面上 並且 按空白建 就切換到跳躍狀態
-            if (player.canJump && player.IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+            bool isGrounded = player.IsGrounded();
+
+            // ✅ 若角色離地 → 進入落下狀態
+            if (!isGrounded)
+            {
+                stateMachine.SwitchState(player.playerFall);
+                return;
+            }
+
+            // ✅ 按空白鍵 → 跳躍
+            if (player.canJump && Input.GetKeyDown(KeyCode.Space))
+            {
                 stateMachine.SwitchState(player.playerJump);
+                return;
+            }
 
-            // 如果 可以攻擊 並且 玩家在地面上 並且 按左鍵 就切換到攻擊狀態
-            if (player.canAttack && player.IsGrounded() && Input.GetKeyDown(KeyCode.Mouse0))
+            // ✅ 按左鍵 → 攻擊
+            if (player.canAttack && Input.GetKeyDown(KeyCode.Mouse0))
+            {
                 stateMachine.SwitchState(player.playerAttack);
+                return;
+            }
 
-            // 如果 可以蹲下 並且 玩家在地面上 並且 按C 就切換到蹲下狀態
-            if (player.canCrouch && player.IsGrounded() && Input.GetKeyDown(KeyCode.C))
-                stateMachine.SwitchState(player.playerCrouch);
+            // ✅ 滑鏟：跑步中 + 按下 ↓/S 鍵觸發
+            if (player.IsRunning && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)))
+            {
+                stateMachine.SwitchState(player.playerSlide);
+                return;
+            }
+
+            // ✅ C 鍵切換蹲下狀態（可靜止或移動）
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                crouchToggle = !crouchToggle;
+
+                if (crouchToggle)
+                    stateMachine.SwitchState(player.playerCrouch);
+                else
+                    stateMachine.SwitchState(player.playerIdle);
+            }
         }
     }
 }

@@ -14,8 +14,11 @@ namespace Mr.Wonderful
         public override void Enter()
         {
             base.Enter();
+            // 🔁 再次保證動畫參數切回正常
+            player.ani.SetBool("isCrouching", false);
+            player.SetVelocity(Vector2.zero);
             player.ani.SetFloat("移動", 0);
-            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeAll;
+            player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeRotation;
         }
 
         public override void Exit()
@@ -33,7 +36,12 @@ namespace Mr.Wonderful
             if (!player.canMove) return;
 
             // 如果 玩家水平值 不等於 0 請就 狀態機 切換到 跑步狀態
-            if (h != 0) stateMachine.SwitchState(player.playerRun); 
+            if (h != 0) stateMachine.SwitchState(player.playerRun);
+
+            if (!player.isCrouching && h != 0)
+            {
+                stateMachine.SwitchState(player.playerRun);
+            }
         }
     }
 }
