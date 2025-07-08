@@ -11,6 +11,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: "\u662F\u5426\u8E72\u4E0B"
     m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: "\u8E72\u4E0B\u79FB\u52D5"
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8308967270602461203}
   m_Solo: 0
@@ -145,7 +148,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: "\u79FB\u52D5"
     m_Mirror: 0
-  m_BlendParameter: "\u79FB\u52D5"
+  m_BlendParameter: "\u8E72\u4E0B\u79FB\u52D5"
   m_BlendParameterY: "\u79FB\u52D5"
   m_MinThreshold: 0
   m_MaxThreshold: 0.1
@@ -212,6 +215,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: "\u662F\u5426\u8E72\u4E0B"
+    m_EventTreshold: 0
+  - m_ConditionMode: 3
+    m_ConditionEvent: "\u8E72\u4E0B\u79FB\u52D5"
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 0}
@@ -440,6 +446,12 @@ AnimatorController:
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: "\u79FB\u52D5"
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: "\u8E72\u4E0B\u79FB\u52D5"
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0

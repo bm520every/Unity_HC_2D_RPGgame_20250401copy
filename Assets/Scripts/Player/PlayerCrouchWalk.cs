@@ -30,7 +30,7 @@ namespace Mr.Wonderful
 
             player.SetVelocity(new Vector2(h * player.crouchSpeed, player.rig.velocity.y));
             // 移動動畫
-            player.ani.SetFloat("移動", Mathf.Abs(h));
+            player.ani.SetFloat("蹲下移動", Mathf.Abs(h));
             // 翻面
             player.Flip(h);
 

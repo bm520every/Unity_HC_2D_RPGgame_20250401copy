@@ -15,7 +15,7 @@ namespace Mr.Wonderful
         {
             base.Enter();
             // 🔁 再次保證動畫參數切回正常
-            player.ani.SetBool("isCrouching", false);
+            player.ani.SetBool("是否蹲下", false);
             player.SetVelocity(Vector2.zero);
             player.ani.SetFloat("移動", 0);
             player.rig.constraints = UnityEngine.RigidbodyConstraints2D.FreezeRotation;

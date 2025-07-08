@@ -29,6 +29,7 @@ namespace Mr.Wonderful
         public bool canJump { get; set; } = false;
         public bool canAttack { get; set; } = false;
         public bool canCrouch { get; set; } = false;
+        public bool canCrouchAttack { get; set; } = false;
 
 
         [Header("檢查地板資料")]
@@ -60,6 +61,8 @@ namespace Mr.Wonderful
 
         // 是否正在跑步（用來偵測滑鏟觸發）
         public bool IsRunning => Mathf.Abs(inputDirection.x) > 0.8f && IsGrounded();
+       //　是否正在蹲下
+        public bool isCrouching { get; internal set; }
         // 在 Player 類別中加入 faceDir 屬性
         public int faceDir { get; set; } = 1;
 
